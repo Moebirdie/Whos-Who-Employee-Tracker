@@ -1,0 +1,23 @@
+{
+  "name": "whos-who-employee-tracker",
+  "version": "1.0.0",
+  "description": "Command line CMS for tracking employees",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Moebirdie/Whos-Who-Employee-Tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Moebirdie/Whos-Who-Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/Moebirdie/Whos-Who-Employee-Tracker#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "mysql2": "^3.5.2"
+  }
+}
