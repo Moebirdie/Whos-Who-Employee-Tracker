@@ -1,33 +1,41 @@
-const runQueries = require('./run-queries');
+// const { Department } = require('./lib/departments');
+// let mysql  = require('mysql');
+// let config = require('./config/config');
+// let connection = mysql.createConnection(config);
 
-async function main() {
-  try {
-    // Create a new department
-    const departmentId = await runQueries.createDepartment('newDept', true);
-    console.log('Created new department with ID:', departmentId);
+// async function main1() {
+//   try {
+//     // Fetch all Departments
+//     //const sqlInput = new Department().viewAllDepartments;
+//     const sqlInput = `SELECT * FROM department`;
+//     const result = connection.query(sqlInput);
+//     console.log(result);
+//   } catch (error) {
+//     console.error('Error:', error.message);
+//   }
+// }
 
-    // Create a new role
-    const roleId = await runQueries.createRole('newRole', 30000000, departmentId, true);
-    console.log('Created new role with ID:', roleId);
+// main1();
+// index.js (or your main entry file)
 
-    // Insert a new employee
-    await runQueries.createEmployee('new', 'Employee', roleId, null, true);
-    console.log('Created new employee successfully');
-  } catch (error) {
-    console.error('Error:', error.message);
-  }
-}
+const DataClass = require('./lib/departments');
 
-main();
+// MySQL configuration
+const dbConfig = {
+    host: 'localhost',
+    user: 'root',
+    password: '9gnF97ChpvHVk@@JYipb',
+    database: 'bankcompany_db'
+};
 
-async function main1() {
-  try {
-    // Fetch all employees
-    const employees = await dbFunctions.getAllEmployees();
-    console.table(employees);
-  } catch (error) {
-    console.error('Error:', error.message);
-  }
-}
+const dataInstance = new DataClass(dbConfig);
 
-main1();
+// Example of fetching data
+dataInstance.fetchData()
+  .then((data) => {
+    console.log(data);
+    // Use the fetched data here as per your requirement
+  })
+  .catch((err) => {
+    console.error(err);
+  });

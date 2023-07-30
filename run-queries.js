@@ -24,10 +24,8 @@ const db = mysql.createPool(
 // function to run SQL queries - take input params, connect to db, query db, return result
 async function runQuery(sql, params) {
   try {
-    const connect = await db.getConnection();
-    const [result] = await connect.query(sql, params);
-    connect.release();
-    console.log(result);
+    const [result] = await db.query(sql, params);
+    console.table(result);
     return result;
   }
   catch (error) {
@@ -78,5 +76,7 @@ async function viewEmployees() {
   console.log('helloemp');
   return runQuery(sql);
 }
+viewDepartments();
 
-module.exports = { viewEmployees, viewRoles, viewDepartments, createEmployee, createDepartment, createRole };
+//module.exports = { viewEmployees, viewRoles, viewDepartments, createEmployee, createDepartment, createRole };
+module.exports = { db, runQuery }
