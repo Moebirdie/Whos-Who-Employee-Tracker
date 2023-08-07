@@ -76,7 +76,8 @@ async function viewEmployees() {
   console.log('helloemp');
   return runQuery(sql);
 }
-viewDepartments();
+//viewDepartments();
+
 
 //module.exports = { viewEmployees, viewRoles, viewDepartments, createEmployee, createDepartment, createRole };
 module.exports = { db, runQuery }
