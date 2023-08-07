@@ -30,7 +30,6 @@ const runTableQuery = async function runQuery(sql, params) {
 const runMessageQuery = async function runQuery(sql, params, msg) {
   try {
     const [result] = await db.query(sql, params);
-//    console.table(result);
     console.log(msg);
     return result;
   }
@@ -40,24 +39,27 @@ const runMessageQuery = async function runQuery(sql, params, msg) {
 }
 
 const deptChoices = async () => {
-  const departmentQuery = 'SELECT id AS value, name FROM department;';
+  const departmentQuery = 'SELECT id AS value, name FROM department ORDER BY name ASC;';
   const departments = await db.query(departmentQuery);
   return departments[0];
 }
 
 const roleChoices = async () => {
-  const roleQuery = 'SELECT id AS value, title FROM role;';
+  const roleQuery = 'SELECT id AS value, title AS name FROM role ORDER BY title ASC;';
   const roles = await db.query(roleQuery);
-  console.log(roles);
-  //const formattedRoles = roles.map(role => ({ value: role.id, title: role.title }));
-  //console.log(formattedRoles);
   return roles[0];
 }
 
 const mgrChoices = async () => {
-  const managerQuery = 'SELECT emp.manager_id AS value, man.last_name AS man_last_name FROM employee emp LEFT JOIN employee man ON emp.manager_id = man.id;';
+  const managerQuery = 'SELECT DISTINCT emp.manager_id AS value, man.last_name AS name FROM employee emp LEFT JOIN employee man ON emp.manager_id = man.id ORDER BY man.last_name ASC;';
   const managers = await db.query(managerQuery);
   return managers[0];
 }
 
-module.exports = { runTableQuery, runMessageQuery, deptChoices, mgrChoices, roleChoices }
+const employeeChoices = async () => {
+  const employeeQuery = 'SELECT id AS value, CONCAT(first_name, " ", last_name) AS name FROM employee ORDER BY last_name, first_name;';
+  const employees = await db.query(employeeQuery);
+  return employees[0];
+}
+
+module.exports = { runTableQuery, runMessageQuery, deptChoices, mgrChoices, roleChoices, employeeChoices }
