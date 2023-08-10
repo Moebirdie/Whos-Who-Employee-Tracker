@@ -38,17 +38,6 @@ const runMessageQuery = async function runQuery(sql, params, msg) {
   }
 }
 
-const runSeedsQuery = async function runQuery(sql, msg) {
-  try {
-    const [result] = await db.query(sql);
-    console.log(msg);
-    return result;
-  }
-  catch (error) {
-    throw error;
-  }
-}
-
 const deptChoices = async () => {
   const departmentQuery = 'SELECT id AS value, name FROM department ORDER BY name ASC;';
   const departments = await db.query(departmentQuery);
@@ -73,4 +62,4 @@ const employeeChoices = async () => {
   return employees[0];
 }
 
-module.exports = { runTableQuery, runMessageQuery, deptChoices, mgrChoices, roleChoices, employeeChoices, runSeedsQuery }
+module.exports = { runTableQuery, runMessageQuery, deptChoices, mgrChoices, roleChoices, employeeChoices }
