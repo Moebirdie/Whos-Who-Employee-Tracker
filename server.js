@@ -458,7 +458,7 @@ function deleteDepartment() {
 function deleteRole() {
   inquirer.prompt(deleteRoleQuestions)
     .then((deleteRoleAnswers) => {
-      const deleteRole = new RoleClass().deleteRole(deleteRoleAnswers.RoleId)
+      const deleteRole = new RoleClass().deleteRole(deleteRoleAnswers.roleId)
       .then(()=> {
         askQuestions();
       })  
