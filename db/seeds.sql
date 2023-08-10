@@ -28,7 +28,7 @@
         ("Chief Financial Officer", 250000, 1, true),
         ("Accountant I", 60000, 5, true),
         ("Accountant II", 75000, 5, true),
-        ("GL Technical Specialist", 85000, 5, true),
+        ("Technical Specialist", 85000, 5, true),
         ("Finance Manager", 125000, 5, true),
         ("Controller", 225000, 5, true),       
         ("Chief Economist", 250000, 1, true),
@@ -40,7 +40,7 @@
         ("AM Managing Director", 225000, 6, true)
   ;
 
-  INSERT INTO employee (first_name, last_name, role_id, is_active)
+    INSERT INTO employee (first_name, last_name, role_id, is_active)
   VALUES ("Ethan", "Smith", 1, true),
         ("Ava", "Johnson", 2, true),
         ("Logan", "Williams", 3, true),

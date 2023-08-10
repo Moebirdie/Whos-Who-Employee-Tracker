@@ -15,7 +15,7 @@ const db = mysql.createPool(
   console.log(`Connected to the bankcompany_db database.`)
 );
 
-// function to run SQL queries - take input params, connect to db, query db, return result
+//function to run SQL queries - take input params, connect to db, query db, return result
 const runTableQuery = async function runQuery(sql, params) {
   try {
     const [result] = await db.query(sql, params);
@@ -30,6 +30,17 @@ const runTableQuery = async function runQuery(sql, params) {
 const runMessageQuery = async function runQuery(sql, params, msg) {
   try {
     const [result] = await db.query(sql, params);
+    console.log(msg);
+    return result;
+  }
+  catch (error) {
+    throw error;
+  }
+}
+
+const runSeedsQuery = async function runQuery(sql, msg) {
+  try {
+    const [result] = await db.query(sql);
     console.log(msg);
     return result;
   }
@@ -62,4 +73,4 @@ const employeeChoices = async () => {
   return employees[0];
 }
 
-module.exports = { runTableQuery, runMessageQuery, deptChoices, mgrChoices, roleChoices, employeeChoices }
+module.exports = { runTableQuery, runMessageQuery, deptChoices, mgrChoices, roleChoices, employeeChoices, runSeedsQuery }

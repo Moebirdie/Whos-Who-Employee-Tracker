@@ -34,7 +34,8 @@ const actionQuestion = [
       'UPDATE a department name',
       'DELETE a deparment',
       "DELETE a role",
-      "DELETE an employee"
+      "DELETE an employee",
+      "Quit"
     ],
     loop: false,
   }
@@ -45,7 +46,8 @@ const viewEmpbyDeptQuestions = [
     type: 'list',
     message: 'What department would you like to view?',
     name: 'viewEmpDeptId',
-    choices: deptChoices
+    choices: deptChoices,
+    loop: false
   }
 ]
 
@@ -76,7 +78,7 @@ const addRoleQuestions = [
     message: 'What department is this role for?',
     name: 'addRoleDept',
     choices: deptChoices,
-    validate: isQuesAnswered
+    loop: false
   }
 ]
 
@@ -97,13 +99,15 @@ const addEmployeeQuestions = [
     type: 'list',
     message: 'What TITLE does the employee have?',
     name: 'addRoleId',
-    choices: roleChoices
+    choices: roleChoices,
+    loop: false
   },
   {
     type: 'list',
     message: 'Who is the MANAGER of the employee?',
     name: 'addMgrId',
-    choices: mgrChoices
+    choices: mgrChoices,
+    loop: false
   }
 ]
 
@@ -113,7 +117,7 @@ const updateRoleSalaryQuestions = [
     message: 'What role would you like to update?',
     name: 'updateRoleId',
     choices: roleChoices,
-    validate: isQuesAnswered
+    loop: false
   },
   {
     type: 'input',
@@ -128,13 +132,15 @@ const updateRoleEmployeeQuestions = [
     type: 'list',
     message: 'Which employee would you like to update?',
     name: 'updateId',
-    choices: employeeChoices
+    choices: employeeChoices,
+    loop: false
   },
   {
     type: 'list',
     message: 'What is the new ROLE of the employee?',
     name: 'updateRole',
-    choices: roleChoices
+    choices: roleChoices,
+    loop: false
   }
 ]
 
@@ -143,13 +149,15 @@ const updateMgrQuestions = [
     type: 'list',
     message: 'Which employee would you like to update?',
     name: 'updateId',
-    choices: employeeChoices
+    choices: employeeChoices,
+    loop: false
   },
   {
     type: 'list',
     message: 'Who is the new MANAGER of the employee?',
     name: 'updateMgrId',
-    choices: mgrChoices
+    choices: mgrChoices,
+    loop: false
   }
 ]
 
@@ -158,7 +166,8 @@ const deleteDepartmentQuestions = [
     type: 'list',
     message: 'Which DEPARTMENT would you like to delete?',
     name: 'deptId',
-    choices: deptChoices
+    choices: deptChoices,
+    loop: false
   }
 ]
 
@@ -167,7 +176,8 @@ const deleteRoleQuestions = [
     type: 'list',
     message: 'Which ROLE would you like to delete?',
     name: 'roleId',
-    choices: roleChoices
+    choices: roleChoices,
+    loop: false
   }
 ]
 
@@ -176,38 +186,113 @@ const deleteEmpQuestions = [
     type: 'list',
     message: 'Which EMPLOYEE would you like to delete?',
     name: 'empId',
-    choices: employeeChoices
+    choices: employeeChoices,
+    loop: false
   }
+]
+
+const updateDeptNameQuestions = [
+  {
+    type: 'list',
+    message: 'Which Department Name would you like to update?',
+    name: 'id',
+    choices: deptChoices,
+    loop: false
+  },
+  {
+    type: 'input',
+    message: 'What is the new name of the Department?',
+    name: 'newName',  
+  }
+
 ]
 
 
 
 
-function viewDepartments() {
-  const department = new DepartmentClass().viewAllDepartments();
+async function viewDepartments() {
+  const department = new DepartmentClass().viewAllDepartments()
+  await department
+  .then(()=> {
+    askQuestions();
+  })
+.catch((error) => {
+    if (error.isTtyError) {
+      console.log(error);
+    } else {
+      console.log(error)
+    }
+  })
 };
 
-function viewRoles() {
-  const role = new RoleClass().viewAllRoles();
+async function viewRoles() {
+  const role = new RoleClass().viewAllRoles()
+  await role
+  .then(()=> {
+    askQuestions();
+  })
+.catch((error) => {
+    if (error.isTtyError) {
+      console.log(error);
+    } else {
+      console.log(error)
+    }
+  })
 };
 
-function viewEmployees() {
-  const employee = new EmployeeClass().viewAllEmployees();
+async function viewEmployees() {
+  const employee = new EmployeeClass().viewAllEmployees()
+  await employee
+  .then(()=> {
+    askQuestions();
+  })
+.catch((error) => {
+    if (error.isTtyError) {
+      console.log(error);
+    } else {
+      console.log(error)
+    }
+  })
 };
 
-function viewAllEmpByMgr() {
-  const employee = new EmployeeClass().viewAllEmployeesByManager();
+async function viewAllEmpByMgr() {
+  const employee = new EmployeeClass().viewAllEmployeesByManager()
+  await employee
+  .then(()=> {
+    askQuestions();
+  })
+.catch((error) => {
+    if (error.isTtyError) {
+      console.log(error);
+    } else {
+      console.log(error)
+    }
+  })
 };
 
-function viewAllEmpByDept() {
-  const employee = new EmployeeClass().viewAllEmpByDept();
+async function viewAllEmpByDept() {
+  const employee = new EmployeeClass().viewAllEmpByDept()
+  await employee
+  .then(()=> {
+    askQuestions();
+  })
+.catch((error) => {
+    if (error.isTtyError) {
+      console.log(error);
+    } else {
+      console.log(error)
+    }
+  })
 };
 
 
-function viewEmpByDept() {
+async function viewEmpByDept() {
   inquirer.prompt(viewEmpbyDeptQuestions)
     .then((viewByDeptAnswers) => {
-      const viewByDepartment = new EmployeeClass().viewEmpByDept(viewByDeptAnswers.viewEmpDeptId)
+  const viewByDepartment = new EmployeeClass().viewEmpByDept(viewByDeptAnswers.viewEmpDeptId)
+  .then(()=> {
+    askQuestions();
+  })
         .catch((error) => {
           if (error.isTtyError) {
             console.log(error);
@@ -221,7 +306,10 @@ function addEmployee() {
   inquirer.prompt(addEmployeeQuestions)
     .then((addEmployeeAnswers) => {
       const addEmployees = new EmployeeClass().createEmployee(addEmployeeAnswers.addFirstName, addEmployeeAnswers.addLastName, addEmployeeAnswers.addRoleId, addEmployeeAnswers.addMgrId, 1)
-        .catch((error) => {
+      .then(()=> {
+        askQuestions();
+      })  
+      .catch((error) => {
           if (error.isTtyError) {
             console.log(error);
           } else {
@@ -235,7 +323,10 @@ function viewEmpByDeptInclSalary() {
   inquirer.prompt(viewEmpbyDeptQuestions)
     .then((viewByDeptAnswers) => {
       const viewByDepartment = new EmployeeClass().viewEmpByDeptInclSalary(viewByDeptAnswers.viewEmpDeptId)
-        .catch((error) => {
+      .then(()=> {
+        askQuestions();
+      })  
+      .catch((error) => {
           if (error.isTtyError) {
             console.log(error);
           } else {
@@ -249,7 +340,27 @@ function addDepartment() {
   inquirer.prompt(addDepartmentQuestions)
     .then((addDeptAnswers) => {
       const addNewDepartment = new DepartmentClass().createDepartment(addDeptAnswers.addDeptName)
-        .catch((error) => {
+      .then(()=> {
+        askQuestions();
+      })  
+      .catch((error) => {
+          if (error.isTtyError) {
+            console.log(error);
+          } else {
+            console.log(error)
+          }
+        })
+    })
+}
+
+function updateDepartmentName() {
+  inquirer.prompt(updateDeptNameQuestions)
+    .then((updateDeptNameAnswers) => {
+      const updateDeptName = new DepartmentClass().updateDepartmentName(updateDeptNameAnswers.newName, updateDeptNameAnswers.id)
+      .then(()=> {
+        askQuestions();
+      })  
+      .catch((error) => {
           if (error.isTtyError) {
             console.log(error);
           } else {
@@ -262,9 +373,11 @@ function addDepartment() {
 function addRole() {
   inquirer.prompt(addRoleQuestions)
     .then((addRoleAnswers) => {
-      console.log(addRoleAnswers)
       const addNewRole = new RoleClass().createRole(addRoleAnswers.addRoleTitle, addRoleAnswers.addRoleSalary, addRoleAnswers.addRoleDept, 1)
-        .catch((error) => {
+      .then(()=> {
+        askQuestions();
+      })  
+      .catch((error) => {
           if (error.isTtyError) {
             console.log(error);
           } else {
@@ -278,7 +391,10 @@ function updateRoleSalary() {
   inquirer.prompt(updateRoleSalaryQuestions)
     .then((updateRoleAnswers) => {
       const updateRoleSalary = new RoleClass().updateRoleSalary(updateRoleAnswers.updateRoleSalary, updateRoleAnswers.updateRoleId)
-        .catch((error) => {
+      .then(()=> {
+        askQuestions();
+      })
+      .catch((error) => {
           if (error.isTtyError) {
             console.log(error);
           } else {
@@ -291,8 +407,11 @@ function updateRoleSalary() {
 function updateRoleEmployee() {
   inquirer.prompt(updateRoleEmployeeQuestions)
     .then((updateRoleAnswers) => {
-      const updateRoleEmployee = new EmployeeClass().updateRoleId(updateRoleAnswers.updateRoleId, updateRoleAnswers.Id)
-        .catch((error) => {
+      const updateRoleEmployee = new EmployeeClass().updateRoleId(updateRoleAnswers.updateRole, updateRoleAnswers.updateId)
+      .then(()=> {
+        askQuestions();
+      })  
+      .catch((error) => {
           if (error.isTtyError) {
             console.log(error);
           } else {
@@ -306,7 +425,10 @@ function updateMgrEmployee() {
   inquirer.prompt(updateMgrQuestions)
     .then((updateMgrAnswers) => {
       const updateMgrEmployee = new EmployeeClass().updateManagerId(updateMgrAnswers.updateMgrId, updateMgrAnswers.updateId)
-        .catch((error) => {
+      .then(()=> {
+        askQuestions();
+      })  
+      .catch((error) => {
           if (error.isTtyError) {
             console.log(error);
           } else {
@@ -320,7 +442,10 @@ function deleteDepartment() {
   inquirer.prompt(deleteDepartmentQuestions)
     .then((deleteDepartmentAnswers) => {
       const deleteDepartment = new DepartmentClass().deleteDepartment(deleteDepartmentAnswers.deptId)
-        .catch((error) => {
+      .then(()=> {
+        askQuestions();
+      })  
+      .catch((error) => {
           if (error.isTtyError) {
             console.log(error);
           } else {
@@ -334,7 +459,10 @@ function deleteRole() {
   inquirer.prompt(deleteRoleQuestions)
     .then((deleteRoleAnswers) => {
       const deleteRole = new RoleClass().deleteRole(deleteRoleAnswers.RoleId)
-        .catch((error) => {
+      .then(()=> {
+        askQuestions();
+      })  
+      .catch((error) => {
           if (error.isTtyError) {
             console.log(error);
           } else {
@@ -347,8 +475,11 @@ function deleteRole() {
 function deleteEmployee() {
   inquirer.prompt(deleteEmpQuestions)
     .then((deleteEmpAnswers) => {
-      const deleteEmployee = new EmployeeClass().deleteEmployee(deleteEmpAnswers.EmpId)
-        .catch((error) => {
+      const deleteEmployee = new EmployeeClass().deleteEmployee(deleteEmpAnswers.empId)
+      .then(()=> {
+        askQuestions();
+      })  
+      .catch((error) => {
           if (error.isTtyError) {
             console.log(error);
           } else {
@@ -358,74 +489,64 @@ function deleteEmployee() {
     })
 }
 
-//function askQuestions() {
 // changed to case statement for cleaner code
+function askQuestions() {
+  inquirer
+    .prompt(actionQuestion)
+    .then((answers) => {
+      // console.log(answers);
+      switch (answers.actionItem) {
+        case 'VIEW all departments':
+          return viewDepartments();
+        case 'VIEW all roles':
+          return viewRoles();
+        case 'VIEW all employees':
+          return viewEmployees();
+        case 'VIEW all employees by manager':
+          return viewAllEmpByMgr();
+        case 'VIEW all employees by department':
+          return viewAllEmpByDept();
+        case 'VIEW employees of a specific department':
+          return viewEmpByDept();
+        case 'VIEW total utilized budget for a specific department with details':
+          return viewEmpByDeptInclSalary();
+        case 'ADD a department':
+          return addDepartment();
+        case 'ADD a role':
+          return addRole();
+        case 'ADD an Employee':
+          return addEmployee();
+        case 'UPDATE an employee role':
+          return updateRoleEmployee();
+        case 'UPDATE an employee manager':
+          return updateMgrEmployee();
+        case 'UPDATE a salary for a role':
+          return updateRoleSalary();
+        case 'UPDATE a department name':
+          return updateDepartmentName();
+        case 'DELETE a deparment':
+          return deleteDepartment();
+        case 'DELETE a role':
+          return deleteRole();
+        case 'DELETE an employee':
+          return deleteEmployee();
+        case 'Quit':
+          return process.exit(0);
+        default:
 
-inquirer
-  .prompt(actionQuestion)
-  .then((answers) => {
-    console.log(answers);
+          console.log('Invalid action item');
+      }
+    })
+    .catch((error) => {
+      if (error.isTtyError) {
+        console.log(error);
+      } else {
+        console.log(error);
+      }
+    });
+}
 
-    switch (answers.actionItem) {
-      case 'VIEW all departments':
-        viewDepartments();
-        break;
-      case 'VIEW all roles':
-        viewRoles();
-        break;
-      case 'VIEW all employees':
-        viewEmployees();
-        break;
-      case 'VIEW all employees by manager':
-        viewAllEmpByMgr();
-        break;
-      case 'VIEW all employees by department':
-        viewAllEmpByDept();
-        break;
-      case 'VIEW employees of a specific department':
-        viewEmpByDept();
-        break;
-      case 'ADD a department':
-        addDepartment();
-        break;
-      case 'ADD a role':
-        addRole();
-        break;
-      case 'ADD an Employee':
-        addEmployee();
-        break;
-      case 'UPDATE a salary for a role':
-        updateRoleSalary();
-        break;
-      case 'UPDATE an employee role':
-        updateRoleEmployee();
-        break;
-      case 'UPDATE an employee manager':
-        updateMgrEmployee();
-        break;            
-      case 'Update an employees of a specific department':
-        viewEmpByDept();
-        break;
-      case 'VIEW total utilized budget for a specific department with details':
-        viewEmpByDeptInclSalary();
-        break;
-      case 'DELETE a deparment':
-        deleteDepartment();
-        break;
-      case 'DELETE a role':
-        deleteRole();
-        break;
-      case 'DELETE an employee':
-        deleteEmployee();
-        break;
-      default:
-        console.log('Invalid action item');
-    }
-  })
-  .catch((error) => {
-    if (error.isTtyError) {
-      console.log(error);
-    } else {
-      console.log(error);
-    }
-  });
+askQuestions();
+
+
+
