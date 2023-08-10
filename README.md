@@ -9,7 +9,7 @@ The Who's Who Employee Tracker is a command line CMS tool used to query bankcomp
 
 The use of functions within the Inquirer choices for list prompts provides a good user experience and allows the code to be dynamic in nature by querying the database for the most recent information when a list choice is presented to the user.
 
-Link to video recording: [Video Recording](https://watch.screencastify.com/v/JyFXj7crvP3ofKrr5Hmc))  
+Link to video recording: [Video Recording](https://watch.screencastify.com/v/JyFXj7crvP3ofKrr5Hmc)  
 Link to live README: [https://github.com/Moebirdie/Whos-Who-Employee-Tracker/](https://github.com/Moebirdie/Whos-Who-Employee-Tracker/)
 
 
