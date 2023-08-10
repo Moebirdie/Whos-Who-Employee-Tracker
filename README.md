@@ -5,16 +5,12 @@ Employee Tracker (command line CMS) using Node.js MySQL and Inquirer
 
 ## Description
 
-This application was designed to create a professional README file for a gitHub repository.. I chose this project because every good repository/project needs a professional README file..
-The skills used for developing this application include node.js, inquirer package, screencastify and an understanding of process flow..
+The Who's Who Employee Tracker is a command line CMS tool used to query bankcompany_db, a MySQL database.  This tool tool is written using Node.js, Inquirer and MySQL.  This employee tracker demonstrates good organizational skills by using classes and reusable functions which reduces errors, increases efficiency, and makes the code more easily read.
 
-I chose these tools because Inquirer is a prompt based package and believe that prompt based technology is the best type of package to use to simplify the process for an end user. Node.js is a powerful command line tool that enables us to utilize the Inquirer package.  Within the Inquirer package I used the input prompt, editor prompt, confirm prompt, conditional statements and list prompt.  
+The use of functions within the Inquirer choices for list prompts provides a good user experience and allows the code to be dynamic in nature by querying the database for the most recent information when a list choice is presented to the user.
 
-I faced many challenges creating this application.  The basic technology was not an issue, but wanting to manipulate Inquirer beyond it's capabilities was an issue for me. It did bring to my attention that one package may not always solve your every need. I am of a strong opinion that a README should not just be a standardized list of questions answered with each creation of an application, but should enhance the end user's understanding of the application. For example, I feel strongly that a good README should always have a visual description for readers who conceptualize better via visual representation. For this reason, I allowed the user to input up to five images. On the other hand, I used an editor prompt for the why and challenges section of the project because the answers for these questions can't be standardized short inputs if the README is to be used by the reader to assess whether this project correlates to what they are looking for. This is a great tool for setting up your first draft of the README file for any repository which can then be edited to create the final README.   
-
-
-Link to video recording: [Video Recording](https://watch.screencastify.com/v/FQHnwyv1kiamS1cnZAFX)  
-Link to live README: [https://moebirdie.github.io/Inquirer-README-Generator/](https://moebirdie.github.io/Inquirer-README-Generator/)
+Link to video recording: [Video Recording](https://watch.screencastify.com/v/JyFXj7crvP3ofKrr5Hmc))  
+Link to live README: [https://github.com/Moebirdie/Whos-Who-Employee-Tracker/](https://github.com/Moebirdie/Whos-Who-Employee-Tracker/)
 
 
 ## Table of Contents
@@ -34,63 +30,70 @@ Link to live README: [https://moebirdie.github.io/Inquirer-README-Generator/](ht
 
 A user installs this application by:  
 
-	1. Cloning the Inquirer-README-Generator  
+	1. Cloning the Who's Who Employee Tracker  
 
 	2. Installing Node.js  
 
-	3. Installing Inqirer.js 
-
-
+	3. Installing Inqirer.js and MySQL
+ 
+ The packages can be installed by deleting the package-lock.json and running npm i or npm install.
   
 
 ## Features <a id="Features"></a>
 
-Features exhibited in this application include simple question prompts, editor prompts to enable paragraph style input and automated README generation..
+Features exhibited in this application include question prompts which either produce a table with the data from the database or a success message.
   
 
 ## Usage <a id="Usage"></a>
 
-This application is intended to be used by an end user to create a professional README file.  By prompting the user to answer questions, the end user is ensured to produce all the necessary elements of a good README file.  The user is expected to answer questions, then the questions are used by the create README file and a README is created in the repository.
+This application is intended as a tool to query a set of tables within a database.  In addition to viewing data, the user has the ability to modify (update) information, add information and delete information. (All CRUD operations.)
   
 
 ## Visual Description <a id="Visual-Description"></a>
 
 A visual representation of the working application may be seen here:  
 
-### User Experience     
+### Database schema creation and seed data    
 
 ![desc](assets/images/enduserinput.png)  
 
 ### Required Package Files:  
 
-![desc](assets/images/requiredfiles.png)  
+![desc](assets/schema.png)   ![desc](assets/seeds.png)   
 
-### Required Answers:  
+### Class structure  
 
-![desc](assets/images/requiredans.png)  
+![desc](assets/classes.png)  
 
-### Logic for writing Images:  
+### Reusable functions  
 
-![desc](assets/images/writeimageslogic.png)  
+![desc](assets/reusablefunction.png)  
 
-### When Functions:  
+### Sample questions function  
 
-![desc](assets/images/whenfunctions.png)  
+![desc](assets/inquirersample.png)    
+
+### Sample view employee choice result
+
+![desc](assets/emplistiing.png)  
+
+### Sample view when an action to update the database has completed  
+
+![desc](assets/runmessageqry.png)  
+
+### Sample result of query with calculation  
+
+![desc](assets/utilsalarydept.png)  
 
 
 ## Contributors <a id="Contributing"></a>
 
 Any user can create a branch, commit their changes and create a pull request to be reviewed. All contributions are welcome!
+
   
-
-## Tests <a id="Tests"></a>
-
-Tests can be performed by downloading the application and running node index.js from the command prompt.
-  
-
 ## Questions  <a id="Questions"></a>
 
-Questions can be directed to maureen.business@gmail.com or submitted via my Github account at [https://github.com/Moebirdie/Inquirer-README-Generator](https://github.com/Moebirdie/Inquirer-README-Generator).
+Questions can be directed to maureen.business@gmail.com or submitted via my Github account at [https://github.com/Moebirdie/Whos-Who-Employee-Tracker](https://github.com/Moebirdie/Whos-Who-Employee-Tracker).
   
 
 ## License <a id="License"></a>
