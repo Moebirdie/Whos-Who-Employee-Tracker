@@ -70,7 +70,7 @@ A visual representation of the working application may be seen here:
 
 ### Sample view employee choice result
 
-![desc](assets/emplistiing.png)  
+![desc](assets/emplisting.png)  
 
 ### Sample view when an action to update the database has completed  
 
