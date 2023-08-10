@@ -55,10 +55,6 @@ A visual representation of the working application may be seen here:
 
 ### Database schema creation and seed data    
 
-![desc](assets/images/enduserinput.png)  
-
-### Required Package Files:  
-
 ![desc](assets/schema.png)   ![desc](assets/seeds.png)   
 
 ### Class structure  
